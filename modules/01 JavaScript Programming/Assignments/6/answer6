@@ -1,1 +1,9 @@
+var x = 1998;
+var y = 2001;
 
+x > y ? console.log(x) : console.log(y);
+
+x++;
+
+var isEqual = x === y;
+console.log(isEqual);
