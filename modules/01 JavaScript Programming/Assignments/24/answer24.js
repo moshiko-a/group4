@@ -1,24 +1,32 @@
-function RandomWord (charsArray) {
-    if (typeof charsArray === 'object'){
-        //this.result = randomize(charsArray); 
-    }
-    else {
-        console.log ('"chars" should be an array.');
-    }
-    this.randomize = function(length){
-        if (typeof length === 'number')
-        {
-            var text = "";
-            var possible = charsArray.join("");
+function RandomWord(tmparr) {
+    if (!(tmparr instanceof Array))
+        throw "\"chars\" should be an array.";
+
+    else if (!(tmparr.every(value => { return typeof value === 'string' })))
+        throw "\"chars\" should include only strings."
+
+    else
+        var charsArray = tmparr.concat();
+
+    this.randomize = function (length) {
+        if (!(isNaN(length))) {
+            var str = "";
+            
             for (var i = 0; i < length; i++)
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-            return text;
-        } 
-        else {
-            console.log('"length" should be a number.');
+                str += charsArray[Math.floor(Math.random() * charsArray.length)];
+
+            return str;
         }
+        else 
+            throw "\"length\" should be a number.";
     }
 }
 
-var word1 = new RandomWord(['a','b','c']);
-console.log(word1.randomize(10));
+try {
+    var word1 = new RandomWord(['a', 'b', 'c']);
+    console.log(word1.randomize(10));
+}
+catch (exeption) {
+    console.log("Error:", exeption);
+
+}
