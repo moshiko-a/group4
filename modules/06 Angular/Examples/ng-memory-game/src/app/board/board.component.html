@@ -1,13 +1,9 @@
 <div id="wrapper">
-
+  <h4>{{gameService.timer.time}}</h4>
   <div *ngIf="!gameService.hasWon; else won">
-
     <app-card *ngFor="let c of cards" [card]="c"></app-card>
-
   </div>
-
   <ng-template #won>
     You Won!
   </ng-template>
-
 </div>

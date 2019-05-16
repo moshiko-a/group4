@@ -9,10 +9,14 @@ import { Card } from '../card.model';
 })
 export class BoardComponent {
   cards: Card[];
-  constructor(private gameService: GameService) {
+  constructor(public gameService: GameService) {
     this.cards = this.gameService.gameCards;
+    this.gameService.startTimer();
+  }
+  ngOnDestroy(): void {
+    this.gameService.stopTimer();
   }
 
-  
+
 
 }
